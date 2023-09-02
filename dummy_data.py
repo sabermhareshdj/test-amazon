@@ -33,7 +33,7 @@ def seed_product(n):
             price=round(random.uniform(20.99, 99.99), 2),
             sku=random.randint(1000, 1000000),
             subtitle=fake.text(max_nb_chars=250),
-            description=fake.text(max_nb_chars=2500),
+            description=fake.text(max_nb_chars=2000),
             quantity=random.randint(0, 30),
             brand=Brand.objects.get(id=random.randint(1, 105))
 
@@ -44,6 +44,6 @@ def seed_product(n):
 
 
 
-seed_brand(2000)
-#seed_product(5)
+#seed_brand(2000)
+seed_product(2000)
    
