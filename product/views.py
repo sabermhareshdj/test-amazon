@@ -4,8 +4,12 @@ from django.shortcuts import render
 from django.views.generic import ListView , DetailView
 from .models import Product , Brand , ProductImages , Review
 
+
+
+
+
 # Create your views here.
-def query_set_debug(request):
+def queryset_debug(request):
     data = Product.objects.all()
     return render(request,'product/debug.html', {'data':data})
 
