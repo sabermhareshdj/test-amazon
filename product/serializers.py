@@ -36,7 +36,7 @@ class ProductListSerializer(serializers.ModelSerializer):
         return reviews
 
 
-class ReviewsSerializer(serializers.ModelSerializer):
+class ReviewsSerializer(TaggitSerializer,serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = '__all__'
