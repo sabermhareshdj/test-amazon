@@ -11,6 +11,7 @@ def get_or_create_cart(request):
         return {'cart_data':cart}
     
     else:
-        return 
+        return {}
+    
 
 
