@@ -6,7 +6,6 @@ from utils.generate_code import generate_code
 from product.models import Product
 
 
-
 # Create your models here.
 CART_STATUS = (
     ('InProgress','InProgress'),
@@ -16,7 +15,7 @@ CART_STATUS = (
 class Cart(models.Model):
     user = models.ForeignKey(User,related_name='cart_user' , on_delete=models.SET_NULL,null=True,blank=True)
     status = models.CharField(max_length=10,choices=CART_STATUS)
-    Coupon = models.ForeignKey('Coupon',related_name='cart_coupon',on_delete=models.SET_NULL,null=True,blank=True)
+    coupon = models.ForeignKey('Coupon',related_name='cart_coupon',on_delete=models.SET_NULL,null=True,blank=True)
     total_after_coupon = models.FloatField(null=True,blank=True)
 
     def __str__(self):
@@ -91,8 +90,6 @@ class Coupon(models.Model):
         week = datetime.timedelt(days=7)
         self.end_date = self.start_date + week
         super(Coupon, self).save(*args, **kwargs)
-    
-
 
 
 

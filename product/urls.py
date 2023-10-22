@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import ProductList , ProductDetail , BrandList , BrandDetail , queryset_debug
 from .api import ProductDetailAPI,ProductListAPI,BrandDetailAPI,BrandListAPI
-
+from orders.api import ApplyCouponAPI
 urlpatterns = [
     path('' , ProductList.as_view()),
     path('debug' ,queryset_debug ),
@@ -15,5 +15,7 @@ urlpatterns = [
     path('api/list/<int:pk>' , ProductDetailAPI.as_view()),
     path('brands/api/list' , BrandListAPI.as_view()),
     path('brands/api/list/<int:pk>' , BrandDetailAPI.as_view()),
+    path('api/<str:username>/cart/apply-coupon' , ApplyCouponAPI.as_view()),
+
 
 ]

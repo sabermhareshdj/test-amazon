@@ -1,0 +1,13 @@
+Heroku :
+    - account heroku
+    - install heroku cli
+    - django project :
+        - procfile
+        - runtime.txt
+        
+        - setup :
+            - django_heroku
+            - whitenoise
+            - gunicorn
+            
+    - update requirements.txt file

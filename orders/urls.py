@@ -18,7 +18,4 @@ urlpatterns = [
     path('api/<str:username>/cart' , CartDetailCreateAPI.as_view()),
     path('api/<str:username>/cart/apply-coupon' , ApplyCouponAPI.as_view()),
 
-
-
-
 ]
