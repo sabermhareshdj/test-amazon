@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-$k!ubh%r#84ro0o*yz0q(u3!3286jlk8-!v1tr=m36!w_$=no#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [djsaber-922ed47f1a00.herokuapp.com/]
-
+#ALLOWED_HOSTS = [djsaber-922ed47f1a00.herokuapp.com/]
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -191,3 +191,10 @@ LANGUAGES = [
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 django_heroku.settings(locals())
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+    }
+}

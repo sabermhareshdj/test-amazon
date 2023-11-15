@@ -6,10 +6,12 @@ from .models import Product , Brand , ProductImages , Review
 from django.db.models import Q , F , Value
 #from django.db.models.aggregates import max,Min,Count,Avg,Sum
 from django.db.models.aggregates import Count
+from django.views.decorators.cache import cache_page
 
 
 
 # Create your views here.
+@cache_page(60 * 1)
 def queryset_debug(request):
     # data = Product.objects.select_related('brand').all() #prefetch_related = many-to-many
     #data = Product.objects.filter(price__gt =70) #اكبر من 70
@@ -25,7 +27,9 @@ def queryset_debug(request):
     # filter with text 
     #data = Product.objects.filter(name__contains = 'Brown')
     #data = Product.objects.filter(name__startwith = 'Brown')
-    data = Product.objects.filter(name__endswith = 'e')
+    #data = Product.objects.filter(name__endswith = 'e')
+
+    data = Product.objects.all()
     #data = Product.objects.filter(tags__isnull = True)
 
     # filter date time
