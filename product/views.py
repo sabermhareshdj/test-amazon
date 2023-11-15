@@ -7,11 +7,12 @@ from django.db.models import Q , F , Value
 #from django.db.models.aggregates import max,Min,Count,Avg,Sum
 from django.db.models.aggregates import Count
 from django.views.decorators.cache import cache_page
+from .tasks import send_emails
 
 
 
 # Create your views here.
-@cache_page(60 * 1)
+#@cache_page(60 * 1)
 def queryset_debug(request):
     # data = Product.objects.select_related('brand').all() #prefetch_related = many-to-many
     #data = Product.objects.filter(price__gt =70) #اكبر من 70
@@ -29,7 +30,9 @@ def queryset_debug(request):
     #data = Product.objects.filter(name__startwith = 'Brown')
     #data = Product.objects.filter(name__endswith = 'e')
 
-    data = Product.objects.all()
+    data = Product.objects.get(id=100)
+
+    send_emails.delay(data)
     #data = Product.objects.filter(tags__isnull = True)
 
     # filter date time
@@ -37,8 +40,8 @@ def queryset_debug(request):
 
     #data = Product.objects.filter(price__gt=80 , quantity__lt =10 ) # and
     #data = Product.objects.filter(
-      #  Q(price__gt=80) |
-     #   Q(quantity__lt =10)
+    #  Q(price__gt=80) |
+    #   Q(quantity__lt =10)
     # ) # or #from django.db.models import Q
     
     #data = Product.objects.filter(
