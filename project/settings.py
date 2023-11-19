@@ -192,12 +192,12 @@ LANGUAGES = [
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 django_heroku.settings(locals())
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://redis:6379/0",
-    }
-}
+#CACHES = {
+#    "default": {
+#        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+#        "LOCATION": "redis://redis:6379/0",
+#    }
+#}
 
 
 #CELERY_BROKER_URL="redis://localhost:6379/0"
@@ -205,5 +205,5 @@ CACHES = {
 
 
 #settings for docker
-CELERY_BROKER_URL="redis://redis:6379/0"
-CELERY_RUSULT_BACKEND="redis://redis:6379/0"
+#CELERY_BROKER_URL="redis://redis:6379/0"
+#CELERY_RUSULT_BACKEND="redis://redis:6379/0"
