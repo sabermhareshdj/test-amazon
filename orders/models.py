@@ -87,8 +87,8 @@ class Coupon(models.Model):
         return self.code
     
     def save(self, *args, **kwargs):
-        week = datetime.timedelt(days=7)
-        self.end_date = self.start_date + week
+        
+
         super(Coupon, self).save(*args, **kwargs)
 
 
