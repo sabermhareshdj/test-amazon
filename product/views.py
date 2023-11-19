@@ -9,6 +9,8 @@ from django.db.models.aggregates import Count
 from django.views.decorators.cache import cache_page
 from .tasks import send_emails
 
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 
 # Create your views here.
@@ -96,14 +98,18 @@ class BrandDetail(ListView):
 
 def add_review(request,slug):
     product = Product.objects.get(slug=slug)
-    rate = request.POST['rate']             # rate = request.POST.get('rate') #rate = request.GET['rate'])
+    rate = request.POST['rate']          # rate = request.POST.get('rate') #rate = request.GET['rate'])
     review = request.POST['review']
 
     Review.objects.create(
-    product = product,
-    rate = rate,
-    review = review,
-    user = request.user,
+        product = product,
+        rate = rate,
+        review = review,
+        user = request.user,
     )
+    # get all reviews
+    reviews = Review.objects.filter(product=product)
+    html = render_to_string ('include/reviews_include.html' , {'reviews':reviews})
+    return JsonResponse({'result':html})
 
-    return redirect(f'/products/{product.slug}')
+    #return redirect(f'/products/{product.slug}')
