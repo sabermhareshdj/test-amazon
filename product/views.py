@@ -32,7 +32,7 @@ def queryset_debug(request):
     #data = Product.objects.filter(name__startwith = 'Brown')
     #data = Product.objects.filter(name__endswith = 'e')
 
-    data = Product.objects.get(id=100)
+    data = Product.objects.all()
 
     send_emails.delay(data)
     #data = Product.objects.filter(tags__isnull = True)
