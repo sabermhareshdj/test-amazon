@@ -226,3 +226,5 @@ CELERY_RUSULT_BACKEND="redis://redis:6379/0"
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailOrUsernameModelBackend'
     ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
